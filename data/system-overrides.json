@@ -1,0 +1,13 @@
+{
+  "doc": "App overlay on top of data/system-stelios-sotos.json (a spec copy that must not be edited). Each rule applies to a call that NO system rule matched (otherwise the system rule wins), made by the partner of a player whose previous call matched the rule id in `afterRule`. `shows` is a normal constraint set (hcp is widened by the system's hcpSlack, like any rule). The overlay is read by src/engine/overrides.ts and mirrored by data/tools/ref_constraints.py.",
+  "rules": [
+    {
+      "id": "override.fourth-suit-raise.1C1D1H1S2S",
+      "afterRule": "fourth-suit.1C1D1H1S",
+      "call": "2S",
+      "shows": { "hcp": [11, 14], "len": { "S": [4, 13] } },
+      "meaning": "1C-1D-1H-1S(fourth suit, F1)-2S: opener raises the artificial suit and shows 4+ spades and 11-14 HCP (Bridge Matey, phase 5 question 3).",
+      "source": "Bridge Matey, answer to phase 5 question 3"
+    }
+  ]
+}

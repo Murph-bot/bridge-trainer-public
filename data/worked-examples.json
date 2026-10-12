@@ -1,0 +1,884 @@
+[
+ {
+  "id": "ex1-1NT-3NT",
+  "dealer": "N",
+  "auction": [
+   "1N",
+   "P",
+   "3N",
+   "P",
+   "P",
+   "P"
+  ],
+  "leader": "E",
+  "leaderHand": "QJ1094 ♠ K82 ♥ 963 ♦ 75 ♣",
+  "profiles": {
+   "N": "opps",
+   "S": "opps",
+   "E": "ss",
+   "W": "ss"
+  },
+  "constraints": {
+   "N": {
+    "hard": {
+     "hcp": [
+      14,
+      18
+     ],
+     "len": {},
+     "all": [
+      {
+       "shape": "balanced"
+      }
+     ]
+    },
+    "soft": {
+     "hcp": [
+      15,
+      17
+     ],
+     "len": {},
+     "notAnyFromSiblings": [
+      "open.2C",
+      "open.2N"
+     ]
+    },
+    "rules": [
+     "open.1N"
+    ],
+    "unmatched": [
+     {
+      "index": 4,
+      "call": "P",
+      "fallback": {}
+     }
+    ]
+   },
+   "S": {
+    "hard": {
+     "hcp": [
+      9,
+      16
+     ],
+     "len": {
+      "S": [
+       0,
+       3
+      ],
+      "H": [
+       0,
+       3
+      ]
+     }
+    },
+    "soft": {
+     "hcp": [
+      10,
+      15
+     ],
+     "len": {
+      "S": [
+       0,
+       3
+      ],
+      "H": [
+       0,
+       3
+      ]
+     },
+     "notAnyFromSiblings": [
+      "nt1.2C",
+      "nt1.2D",
+      "nt1.2H",
+      "nt1.2S",
+      "nt1.4C",
+      "nt1.4D",
+      "nt1.4H",
+      "nt1.4N"
+     ]
+    },
+    "rules": [
+     "nt1.3N"
+    ]
+   },
+   "W": {
+    "hard": {
+     "hcp": [
+      0,
+      37
+     ],
+     "len": {}
+    },
+    "soft": {
+     "hcp": [
+      0,
+      37
+     ],
+     "len": {}
+    },
+    "rules": [],
+    "unmatched": [
+     {
+      "index": 3,
+      "call": "P",
+      "fallback": {}
+     }
+    ]
+   }
+  },
+  "sampling": {
+   "accepted": 500,
+   "tried": 34340,
+   "acceptanceRate": 0.01456,
+   "seconds": 0.44,
+   "timedOut": false
+  }
+ },
+ {
+  "id": "ex2-1S-2S-4S",
+  "dealer": "S",
+  "auction": [
+   "1S",
+   "P",
+   "2S",
+   "P",
+   "4S",
+   "P",
+   "P",
+   "P"
+  ],
+  "leader": "W",
+  "leaderHand": "K73 ♠ AJ104 ♥ Q92 ♦ 853 ♣",
+  "profiles": {
+   "N": "opps",
+   "S": "opps",
+   "E": "ss",
+   "W": "ss"
+  },
+  "constraints": {
+   "N": {
+    "hard": {
+     "hcp": [
+      5,
+      11
+     ],
+     "len": {
+      "S": [
+       3,
+       4
+      ]
+     }
+    },
+    "soft": {
+     "hcp": [
+      6,
+      10
+     ],
+     "len": {
+      "S": [
+       3,
+       4
+      ]
+     },
+     "notAnyFromSiblings": [
+      "resp.1S.4S",
+      "resp.1S.2N",
+      "resp.1S.3S",
+      "resp.1S.4C",
+      "resp.1S.4D",
+      "resp.1S.4H"
+     ]
+    },
+    "rules": [
+     "resp.1S.2S"
+    ],
+    "unmatched": [
+     {
+      "index": 6,
+      "call": "P",
+      "fallback": {}
+     }
+    ]
+   },
+   "E": {
+    "hard": {
+     "hcp": [
+      0,
+      37
+     ],
+     "len": {}
+    },
+    "soft": {
+     "hcp": [
+      0,
+      37
+     ],
+     "len": {}
+    },
+    "rules": [],
+    "unmatched": [
+     {
+      "index": 3,
+      "call": "P",
+      "fallback": {}
+     },
+     {
+      "index": 7,
+      "call": "P",
+      "fallback": {}
+     }
+    ]
+   },
+   "S": {
+    "hard": {
+     "hcp": [
+      14,
+      23
+     ],
+     "len": {
+      "S": [
+       5,
+       13
+      ]
+     },
+     "all": [
+      {
+       "lenCmp": [
+        [
+         "S",
+         ">=",
+         "H"
+        ],
+        [
+         "S",
+         ">=",
+         "D"
+        ],
+        [
+         "S",
+         ">=",
+         "C"
+        ]
+       ]
+      }
+     ]
+    },
+    "soft": {
+     "hcp": [
+      15,
+      22
+     ],
+     "len": {
+      "S": [
+       5,
+       13
+      ]
+     },
+     "notAnyFromSiblings": [
+      "open.1N",
+      "open.2C",
+      "open.2N",
+      "open.2D",
+      "open.2H",
+      "open.2S",
+      "open.3S",
+      "open.3H",
+      "open.3D",
+      "open.3C",
+      "open.3N",
+      "open.4S",
+      "open.4H",
+      "open.4D",
+      "open.4C",
+      "open.5C",
+      "open.5D"
+     ]
+    },
+    "rules": [
+     "open.1S",
+     "rebid.1S2S.4S"
+    ]
+   }
+  },
+  "sampling": {
+   "accepted": 500,
+   "tried": 103809,
+   "acceptanceRate": 0.00482,
+   "seconds": 1.59,
+   "timedOut": false
+  }
+ },
+ {
+  "id": "ex3-competitive-1H-2C-2H-P-4H",
+  "dealer": "N",
+  "auction": [
+   "1H",
+   "2C",
+   "2H",
+   "P",
+   "4H",
+   "P",
+   "P",
+   "P"
+  ],
+  "leader": "E",
+  "leaderHand": "Q4 ♠ 853 ♥ A6 ♦ AQJ1072 ♣",
+  "profiles": {
+   "N": "opps",
+   "S": "opps",
+   "E": "ss",
+   "W": "ss"
+  },
+  "constraints": {
+   "N": {
+    "hard": {
+     "hcp": [
+      10,
+      23
+     ],
+     "len": {
+      "H": [
+       5,
+       13
+      ]
+     },
+     "all": [
+      {
+       "lenCmp": [
+        [
+         "H",
+         ">",
+         "S"
+        ],
+        [
+         "H",
+         ">=",
+         "D"
+        ],
+        [
+         "H",
+         ">=",
+         "C"
+        ]
+       ]
+      }
+     ]
+    },
+    "soft": {
+     "hcp": [
+      11,
+      22
+     ],
+     "len": {
+      "H": [
+       5,
+       13
+      ]
+     },
+     "notAnyFromSiblings": [
+      "open.1S",
+      "open.1N",
+      "open.2C",
+      "open.2N",
+      "open.2D",
+      "open.2H",
+      "open.2S",
+      "open.3S",
+      "open.3H",
+      "open.3D",
+      "open.3C",
+      "open.3N",
+      "open.4S",
+      "open.4H",
+      "open.4D",
+      "open.4C",
+      "open.5C",
+      "open.5D"
+     ]
+    },
+    "rules": [
+     "open.1H"
+    ],
+    "unmatched": [
+     {
+      "index": 4,
+      "call": "4H",
+      "fallback": {}
+     }
+    ]
+   },
+   "S": {
+    "hard": {
+     "hcp": [
+      5,
+      11
+     ],
+     "len": {
+      "H": [
+       3,
+       13
+      ]
+     }
+    },
+    "soft": {
+     "hcp": [
+      6,
+      10
+     ],
+     "len": {
+      "H": [
+       3,
+       13
+      ]
+     },
+     "notAnyFromSiblings": [
+      "cr.1H.2C.X",
+      "cr.1H.2C.cue"
+     ]
+    },
+    "rules": [
+     "cr.1H.2C.raise"
+    ],
+    "unmatched": [
+     {
+      "index": 6,
+      "call": "P",
+      "fallback": {}
+     }
+    ]
+   },
+   "W": {
+    "hard": {
+     "hcp": [
+      0,
+      37
+     ],
+     "len": {}
+    },
+    "soft": {
+     "hcp": [
+      0,
+      37
+     ],
+     "len": {}
+    },
+    "rules": [],
+    "unmatched": [
+     {
+      "index": 3,
+      "call": "P",
+      "fallback": {}
+     },
+     {
+      "index": 7,
+      "call": "P",
+      "fallback": {}
+     }
+    ]
+   }
+  },
+  "sampling": {
+   "accepted": 500,
+   "tried": 36876,
+   "acceptanceRate": 0.01356,
+   "seconds": 0.45,
+   "timedOut": false
+  }
+ },
+ {
+  "id": "ex4-1NT-Stayman-4H",
+  "dealer": "W",
+  "auction": [
+   "P",
+   "1N",
+   "P",
+   "2C",
+   "P",
+   "2H",
+   "P",
+   "4H",
+   "P",
+   "P",
+   "P"
+  ],
+  "leader": "W",
+  "leaderHand": "Q1083 ♠ 942 ♥ KJ5 ♦ A62 ♣",
+  "profiles": {
+   "N": "opps",
+   "S": "opps",
+   "E": "ss",
+   "W": "ss"
+  },
+  "constraints": {
+   "N": {
+    "hard": {
+     "hcp": [
+      14,
+      18
+     ],
+     "len": {
+      "H": [
+       4,
+       13
+      ]
+     },
+     "all": [
+      {
+       "shape": "balanced"
+      }
+     ]
+    },
+    "soft": {
+     "hcp": [
+      15,
+      17
+     ],
+     "len": {
+      "H": [
+       4,
+       13
+      ]
+     },
+     "notAnyFromSiblings": [
+      "open.2C",
+      "open.2N"
+     ]
+    },
+    "rules": [
+     "open.1N",
+     "nt1.2C.2H"
+    ],
+    "unmatched": [
+     {
+      "index": 9,
+      "call": "P",
+      "fallback": {}
+     }
+    ]
+   },
+   "E": {
+    "hard": {
+     "hcp": [
+      0,
+      15
+     ],
+     "len": {}
+    },
+    "soft": {
+     "hcp": [
+      0,
+      14
+     ],
+     "len": {},
+     "notAnyFromSiblings": [
+      "vs1n.direct.X",
+      "vs1n.direct.2C",
+      "vs1n.direct.2D",
+      "vs1n.direct.2H",
+      "vs1n.direct.2S",
+      "vs1n.direct.2N",
+      "vs1n.direct.3C",
+      "vs1n.direct.3D"
+     ]
+    },
+    "rules": [
+     "vs1n.direct.P"
+    ],
+    "unmatched": [
+     {
+      "index": 6,
+      "call": "P",
+      "fallback": {}
+     },
+     {
+      "index": 10,
+      "call": "P",
+      "fallback": {}
+     }
+    ]
+   },
+   "S": {
+    "hard": {
+     "hcp": [
+      0,
+      37
+     ],
+     "len": {
+      "H": [
+       3,
+       13
+      ]
+     },
+     "all": [
+      {
+       "anyOf": [
+        {
+         "hcp": [
+          8,
+          37
+         ],
+         "anyOf": [
+          {
+           "len": {
+            "H": [
+             4,
+             13
+            ]
+           }
+          },
+          {
+           "len": {
+            "S": [
+             4,
+             13
+            ]
+           }
+          }
+         ]
+        },
+        {
+         "hcp": [
+          0,
+          7
+         ],
+         "len": {
+          "S": [
+           4,
+           5
+          ],
+          "H": [
+           4,
+           5
+          ],
+          "C": [
+           0,
+           1
+          ]
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "soft": {
+     "hcp": [
+      0,
+      37
+     ],
+     "len": {
+      "H": [
+       3,
+       13
+      ]
+     },
+     "notAnyFromSiblings": [
+      "nt1.2D",
+      "nt1.2H",
+      "nt1.2S",
+      "nt1.4D",
+      "nt1.4H"
+     ]
+    },
+    "rules": [
+     "nt1.2C"
+    ],
+    "unmatched": [
+     {
+      "index": 7,
+      "call": "4H",
+      "fallback": {
+       "len": {
+        "H": [
+         3,
+         13
+        ]
+       }
+      }
+     }
+    ]
+   }
+  },
+  "sampling": {
+   "accepted": 500,
+   "tried": 119788,
+   "acceptanceRate": 0.00417,
+   "seconds": 1.34,
+   "timedOut": false
+  }
+ },
+ {
+  "id": "ex5-weak2H-relay-same-system",
+  "dealer": "E",
+  "auction": [
+   "2H",
+   "P",
+   "2S",
+   "P",
+   "3D",
+   "P",
+   "4H",
+   "P",
+   "P",
+   "P"
+  ],
+  "leader": "S",
+  "leaderHand": "AQ5 ♠ 7 ♥ KJ1084 ♦ Q963 ♣",
+  "profiles": {
+   "N": "ss",
+   "S": "ss",
+   "E": "ss",
+   "W": "ss"
+  },
+  "constraints": {
+   "N": {
+    "hard": {
+     "hcp": [
+      0,
+      37
+     ],
+     "len": {}
+    },
+    "soft": {
+     "hcp": [
+      0,
+      37
+     ],
+     "len": {}
+    },
+    "rules": [],
+    "unmatched": [
+     {
+      "index": 3,
+      "call": "P",
+      "fallback": {}
+     },
+     {
+      "index": 7,
+      "call": "P",
+      "fallback": {}
+     }
+    ]
+   },
+   "E": {
+    "hard": {
+     "hcp": [
+      5,
+      9
+     ],
+     "len": {
+      "H": [
+       6,
+       6
+      ]
+     },
+     "all": [
+      {
+       "notAny": [
+        {
+         "len": {
+          "S": [
+           5,
+           13
+          ]
+         }
+        }
+       ]
+      }
+     ]
+    },
+    "soft": {
+     "hcp": [
+      6,
+      8
+     ],
+     "len": {
+      "H": [
+       6,
+       6
+      ]
+     },
+     "notAnyFromSiblings": [
+      "open.1N",
+      "open.2C",
+      "open.2N",
+      "w2.2H.relay.step5",
+      "w2.2H.relay.4C",
+      "w2.2H.relay.4D"
+     ]
+    },
+    "rules": [
+     "open.2H.seat12",
+     "w2.2H.relay.step3"
+    ],
+    "unmatched": [
+     {
+      "index": 8,
+      "call": "P",
+      "fallback": {}
+     }
+    ]
+   },
+   "W": {
+    "hard": {
+     "hcp": [
+      0,
+      37
+     ],
+     "len": {
+      "H": [
+       3,
+       13
+      ]
+     },
+     "all": [
+      {
+       "hcpPlusLen": {
+        "suit": "H",
+        "min": 18
+       }
+      }
+     ]
+    },
+    "soft": {
+     "hcp": [
+      0,
+      37
+     ],
+     "len": {
+      "H": [
+       3,
+       13
+      ]
+     },
+     "notAnyFromSiblings": [
+      "w2.2H.4C"
+     ]
+    },
+    "rules": [
+     "w2.2H.relay"
+    ],
+    "unmatched": [
+     {
+      "index": 6,
+      "call": "4H",
+      "fallback": {
+       "len": {
+        "H": [
+         3,
+         13
+        ]
+       }
+      }
+     }
+    ]
+   }
+  },
+  "sampling": {
+   "accepted": 500,
+   "tried": 400912,
+   "acceptanceRate": 0.00125,
+   "seconds": 7.01,
+   "timedOut": false
+  }
+ }
+]

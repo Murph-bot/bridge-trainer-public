@@ -1,0 +1,11 @@
+{
+ "title": "Machine-readable holdings and per-scoring fields for lead-rules.json",
+ "provenance": "Rulings 01 overlays, filtered to the rule ids present in the sample lead-rules.json of the public snapshot.",
+ "fields": {
+  "machine": "replaces holding.patterns of the rule; kinds: suit, paired, longer, tip. See src/rules/machine.ts",
+  "card": "replaces recommendation.card; a string or {IMP, MP}",
+  "weight": "replaces weight; a number or {IMP, MP}",
+  "technical": "the rule decides top-vs-low as a technical choice: it overrides the partnership card table and is judged card by card"
+ },
+ "rules": {}
+}

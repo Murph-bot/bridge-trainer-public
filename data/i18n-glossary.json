@@ -1,0 +1,531 @@
+{
+ "version": "0.1.0",
+ "notes": "verified=true means the Greek term was found in the cited workspace source. Unverified terms need Sotirios's OK before release.",
+ "terms": [
+  {
+   "key": "suit.S",
+   "en": "Spades / ♠",
+   "el": "Πίκα",
+   "source": "ΔΚΑΜ Law 1 (πίκες); Sotirios confirmation 2026-10-02 (teaching-and-design.md §Greek terminology)",
+   "verified": true,
+   "elPlural": "Πίκες"
+  },
+  {
+   "key": "suit.H",
+   "en": "Hearts / ♥",
+   "el": "Κούπα",
+   "source": "ΔΚΑΜ Law 1 (κούπες)",
+   "verified": true,
+   "elPlural": "Κούπες"
+  },
+  {
+   "key": "suit.D",
+   "en": "Diamonds / ♦",
+   "el": "Καρό",
+   "source": "ΔΚΑΜ Law 1 (καρά)",
+   "verified": true,
+   "elPlural": "Καρά"
+  },
+  {
+   "key": "suit.C",
+   "en": "Clubs / ♣",
+   "el": "Σπαθί",
+   "source": "ΔΚΑΜ Law 1 (σπαθιά); Sotirios confirmation 2026-10-02 (teaching-and-design.md §Greek terminology)",
+   "verified": true,
+   "elPlural": "Σπαθιά",
+   "note": "Never use Σπαθί for ♠."
+  },
+  {
+   "key": "strain.NT",
+   "en": "No trump (NT)",
+   "el": "Χωρίς Ατού (ΧΑ)",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions'); ΑΞΙΟΛΟΓΗΣΗ ΧΕΡΙΟΥ.pdf terminology (teaching-and-design.md §4)",
+   "verified": true
+  },
+  {
+   "key": "suit",
+   "en": "Suit",
+   "el": "Χρώμα",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "denomination",
+   "en": "Denomination",
+   "el": "Είδος",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "trump",
+   "en": "Trump",
+   "el": "Ατού",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "honour",
+   "en": "Honour (A K Q J 10)",
+   "el": "Ονέρ",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions'); Sotirios confirmation 2026-10-02 (teaching-and-design.md §Greek terminology)",
+   "verified": true,
+   "note": "Never τιμή/τιμές."
+  },
+  {
+   "key": "rank.A",
+   "en": "Ace",
+   "el": "Άσος",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions') (Honour)",
+   "verified": true
+  },
+  {
+   "key": "rank.K",
+   "en": "King",
+   "el": "Ρήγας",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions') (Honour)",
+   "verified": true
+  },
+  {
+   "key": "rank.Q",
+   "en": "Queen",
+   "el": "Ντάμα",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions') (Honour)",
+   "verified": true
+  },
+  {
+   "key": "rank.J",
+   "en": "Jack",
+   "el": "Βαλές",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions') (Honour)",
+   "verified": true
+  },
+  {
+   "key": "trick",
+   "en": "Trick",
+   "el": "Λεβέ",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "contract",
+   "en": "Contract",
+   "el": "Συμβόλαιο",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "declarer",
+   "en": "Declarer",
+   "el": "Εκτελεστής",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "dummy",
+   "en": "Dummy",
+   "el": "Μορ",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "defender",
+   "en": "Defender",
+   "el": "Αμυνόμενος",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true,
+   "elPlural": "Αμυνόμενοι"
+  },
+  {
+   "key": "lead",
+   "en": "Lead",
+   "el": "Έξοδος",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "openingLead",
+   "en": "Opening lead",
+   "el": "Αντάμ",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true,
+   "note": "Teaching notes suggested «αρχική εκτέλεση» for a carousel; ΔΚΑΜ uses Αντάμ. See gaps G-TERM-2."
+  },
+  {
+   "key": "call",
+   "en": "Call",
+   "el": "Δήλωση",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "bid",
+   "en": "Bid",
+   "el": "Αγορά",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "auction",
+   "en": "Auction",
+   "el": "Αγορές",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "pass",
+   "en": "Pass",
+   "el": "Πάσο",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "double",
+   "en": "Double",
+   "el": "Κοντρ",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "redouble",
+   "en": "Redouble",
+   "el": "Σιρκόντρ",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true,
+   "note": "Brief said «σούρκοντρ»; ΔΚΑΜ writes Σιρκόντρ / σιρκοντρέ. Confirm (gaps G-TERM-1)."
+  },
+  {
+   "key": "doubled",
+   "en": "Doubled (contract)",
+   "el": "Κοντρέ",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions') (Law 19 headings)",
+   "verified": true
+  },
+  {
+   "key": "redoubled",
+   "en": "Redoubled (contract)",
+   "el": "Σιρκοντρέ",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions') (Law 19 headings)",
+   "verified": true
+  },
+  {
+   "key": "overcall",
+   "en": "Overcall",
+   "el": "Παρεμβολή",
+   "source": "Sotirios confirmation 2026-10-02 (teaching-and-design.md §Greek terminology)",
+   "verified": true,
+   "elPlural": "Παρεμβολές",
+   "note": "Never Αντιμπίντ."
+  },
+  {
+   "key": "alert",
+   "en": "Alert",
+   "el": "Προειδοποίηση",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "artificialCall",
+   "en": "Artificial call",
+   "el": "Συμβατική Δήλωση",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "psychic",
+   "en": "Psychic call",
+   "el": "Ψυχίκ",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "game",
+   "en": "Game",
+   "el": "Μανς",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "slam",
+   "en": "Slam",
+   "el": "Σλεμ",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "partscore",
+   "en": "Partscore",
+   "el": "Μερικό Συμβόλαιο",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "undertrick",
+   "en": "Undertrick",
+   "el": "Λεβέ Κάτω",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "overtrick",
+   "en": "Overtrick",
+   "el": "Λεβέ Άνω",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "vulnerability",
+   "en": "Vulnerability",
+   "el": "Μανς (συνθήκη ευπάθειας)",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": false,
+   "note": "ΔΚΑΜ defines Vulnerability under the word Μανς (sense 2). UI label wording unverified."
+  },
+  {
+   "key": "vul.yes",
+   "en": "Vulnerable",
+   "el": "Στην 2η",
+   "source": "Sotirios confirmation 2026-10-04 (G-TERM-3)",
+   "verified": true
+  },
+  {
+   "key": "vul.no",
+   "en": "Not vulnerable",
+   "el": "Στην 1η",
+   "source": "Sotirios confirmation 2026-10-04 (G-TERM-3)",
+   "verified": true
+  },
+  {
+   "key": "vul.none",
+   "en": "None vulnerable",
+   "el": "Κανείς",
+   "source": "unverified: common usage, not found in workspace sources",
+   "verified": false
+  },
+  {
+   "key": "vul.all",
+   "en": "Both vulnerable",
+   "el": "Όλοι",
+   "source": "unverified: common usage, not found in workspace sources",
+   "verified": false
+  },
+  {
+   "key": "vul.NS",
+   "en": "N-S vulnerable",
+   "el": "ΒΝ",
+   "source": "OAMH 'Η ΔΙΑΝΟΜΗ ΤΗΣ ΕΒΔΟΜΑΔΑΣ' cards (teaching-and-design.md §3.1); ΔΚΑΜ table",
+   "verified": true
+  },
+  {
+   "key": "vul.EW",
+   "en": "E-W vulnerable",
+   "el": "ΑΔ",
+   "source": "OAMH 'Η ΔΙΑΝΟΜΗ ΤΗΣ ΕΒΔΟΜΑΔΑΣ' cards (teaching-and-design.md §3.1)",
+   "verified": true
+  },
+  {
+   "key": "dealer",
+   "en": "Dealer",
+   "el": "Μοιράζει",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions') («αυτός που μοιράζει»)",
+   "verified": false,
+   "note": "Short UI label unverified; OAMH cards print only the seat letter."
+  },
+  {
+   "key": "seat.N",
+   "en": "North",
+   "el": "Βορράς",
+   "source": "OAMH 'Η ΔΙΑΝΟΜΗ ΤΗΣ ΕΒΔΟΜΑΔΑΣ' cards (teaching-and-design.md §3.1)",
+   "verified": true
+  },
+  {
+   "key": "seat.E",
+   "en": "East",
+   "el": "Ανατολή",
+   "source": "OAMH 'Η ΔΙΑΝΟΜΗ ΤΗΣ ΕΒΔΟΜΑΔΑΣ' cards (teaching-and-design.md §3.1)",
+   "verified": true
+  },
+  {
+   "key": "seat.S",
+   "en": "South",
+   "el": "Νότος",
+   "source": "OAMH 'Η ΔΙΑΝΟΜΗ ΤΗΣ ΕΒΔΟΜΑΔΑΣ' cards (teaching-and-design.md §3.1)",
+   "verified": true
+  },
+  {
+   "key": "seat.W",
+   "en": "West",
+   "el": "Δύση",
+   "source": "OAMH 'Η ΔΙΑΝΟΜΗ ΤΗΣ ΕΒΔΟΜΑΔΑΣ' cards (teaching-and-design.md §3.1)",
+   "verified": true
+  },
+  {
+   "key": "partner",
+   "en": "Partner",
+   "el": "Συμπαίκτης",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "opponent",
+   "en": "Opponent",
+   "el": "Αντίπαλος",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "side",
+   "en": "Side (partnership)",
+   "el": "Άξονας",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "LHO",
+   "en": "Left-hand opponent",
+   "el": "ΑΣΑ (Αντίπαλος Στα Αριστερά)",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "RHO",
+   "en": "Right-hand opponent",
+   "el": "ΑΣΔ (Αντίπαλος Στα Δεξιά)",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "hand",
+   "en": "Hand",
+   "el": "Χέρι",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "deal",
+   "en": "Deal",
+   "el": "Διανομή",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "board",
+   "en": "Board",
+   "el": "Θήκη",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "followSuit",
+   "en": "Follow suit",
+   "el": "Ακολουθώ στο Χρώμα",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "IMP",
+   "en": "IMP",
+   "el": "Διεθνής Βαθμός Αγώνα (IMP)",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "matchpoint",
+   "en": "Matchpoint",
+   "el": "Βαθμός Αγώνα (Matchpoint)",
+   "source": "ΔΚΑΜ 2017 definitions (laws-db/clauses.jsonl, Law 'Definitions')",
+   "verified": true
+  },
+  {
+   "key": "openingBid",
+   "en": "Opening bid",
+   "el": "Άνοιγμα",
+   "source": "teaching-and-design.md §3.4 item 3",
+   "verified": true
+  },
+  {
+   "key": "hcp",
+   "en": "High-card points",
+   "el": "Πόντοι ονέρ",
+   "source": "unverified: common usage, not found in workspace sources",
+   "verified": false
+  },
+  {
+   "key": "response",
+   "en": "Response",
+   "el": "Απάντηση",
+   "source": "unverified: common usage, not found in workspace sources",
+   "verified": false
+  },
+  {
+   "key": "forcing",
+   "en": "Forcing",
+   "el": "Υποχρεωτική",
+   "source": "unverified: common usage, not found in workspace sources",
+   "verified": false
+  },
+  {
+   "key": "balanced",
+   "en": "Balanced",
+   "el": "Ισοκατανεμημένο",
+   "source": "unverified: common usage, not found in workspace sources",
+   "verified": false
+  },
+  {
+   "key": "singleton",
+   "en": "Singleton",
+   "el": "Σινγκλετόν",
+   "source": "unverified: common usage, not found in workspace sources",
+   "verified": false
+  },
+  {
+   "key": "void",
+   "en": "Void",
+   "el": "Κενό",
+   "source": "unverified: common usage, not found in workspace sources",
+   "verified": false,
+   "note": "Wild Aggressor notes write «sican» (σικάν) next to void; confirm which the UI uses."
+  },
+  {
+   "key": "doubleDummy",
+   "en": "Double dummy",
+   "el": "Διπλό ανοιχτό",
+   "source": "unverified: common usage, not found in workspace sources",
+   "verified": false
+  },
+  {
+   "key": "defeatProbability",
+   "en": "Probability of defeating the contract",
+   "el": "Πιθανότητα να πέσει το συμβόλαιο",
+   "source": "unverified: common usage, not found in workspace sources",
+   "verified": false
+  },
+  {
+   "key": "signal.attitude",
+   "en": "Attitude signal",
+   "el": "Σήμα ενθάρρυνσης",
+   "source": "unverified: common usage, not found in workspace sources",
+   "verified": false
+  },
+  {
+   "key": "signal.count",
+   "en": "Count signal",
+   "el": "Σήμα μετρήματος",
+   "source": "unverified: common usage, not found in workspace sources",
+   "verified": false
+  },
+  {
+   "key": "signal.preference",
+   "en": "Suit preference",
+   "el": "Σήμα προτίμησης",
+   "source": "unverified: common usage, not found in workspace sources",
+   "verified": false
+  },
+  {
+   "key": "leadRating",
+   "en": "Lead rating",
+   "el": "Βαθμολογία εξόδου",
+   "source": "unverified: common usage, not found in workspace sources",
+   "verified": false
+  }
+ ]
+}

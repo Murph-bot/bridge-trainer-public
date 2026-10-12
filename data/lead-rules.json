@@ -1,0 +1,341 @@
+[
+ {
+  "id": "NT-011",
+  "contract_type": "NT",
+  "conditions": {
+   "level": "game",
+   "auction": {
+    "features": [
+     "1NT-3NT"
+    ],
+    "sequences": [
+     "1NT-3NT"
+    ]
+   },
+   "holding": {
+    "patterns": [
+     "Hxxxx"
+    ],
+    "suit_role": "long suit"
+   },
+   "hand_strength": "any",
+   "scoring": "both"
+  },
+  "recommendation": {
+   "lead_suit": "long suit",
+   "card": "4th best",
+   "text": "Against notrump, a long suit headed by an honour is the natural attack: lead fourth best."
+  },
+  "preference_over": [
+   "Kx",
+   "Axx",
+   "xxx"
+  ],
+  "weight": 0.6,
+  "evidence": {
+   "type": "author_advice"
+  },
+  "source": {
+   "book": "",
+   "book_key": "sample",
+   "chapter": 0,
+   "page": 0
+  }
+ },
+ {
+  "id": "NT-016",
+  "contract_type": "NT",
+  "conditions": {
+   "level": "game",
+   "auction": {
+    "features": [
+     "1NT-3NT"
+    ],
+    "sequences": [
+     "1NT-3NT"
+    ]
+   },
+   "holding": {
+    "patterns": [
+     "KQx",
+     "QJx"
+    ],
+    "suit_role": "any"
+   },
+   "hand_strength": "any",
+   "scoring": "both"
+  },
+  "recommendation": {
+   "lead_suit": "strong tripleton",
+   "card": "top honour",
+   "text": "From three cards headed by two touching honours, lead the top honour."
+  },
+  "preference_over": [
+   "moderate 5-6 card suit"
+  ],
+  "weight": 0.6,
+  "evidence": {
+   "type": "author_advice"
+  },
+  "source": {
+   "book": "",
+   "book_key": "sample",
+   "chapter": 0,
+   "page": 0
+  }
+ },
+ {
+  "id": "NT-072",
+  "contract_type": "NT",
+  "conditions": {
+   "level": "any",
+   "auction": {
+    "features": [
+     "any_NT"
+    ],
+    "sequences": []
+   },
+   "holding": {
+    "patterns": [
+     "KQJ",
+     "KQJx",
+     "QJT"
+    ],
+    "suit_role": "any"
+   },
+   "hand_strength": "any",
+   "scoring": "both"
+  },
+  "recommendation": {
+   "lead_suit": "sequence",
+   "card": "top of sequence",
+   "text": "Lead the top card of a three-card honour sequence; it is safe and sets up tricks."
+  },
+  "preference_over": [
+   "Kxxx"
+  ],
+  "weight": 0.6,
+  "evidence": {
+   "type": "author_advice"
+  },
+  "source": {
+   "book": "",
+   "book_key": "sample",
+   "chapter": 0,
+   "page": 0
+  }
+ },
+ {
+  "id": "SU-001",
+  "contract_type": "suit",
+  "conditions": {
+   "level": "game",
+   "auction": {
+    "features": [
+     "one_suit_auction"
+    ],
+    "sequences": [
+     "1S-2S-4S",
+     "1S-3S-4S"
+    ]
+   },
+   "holding": {
+    "patterns": [
+     "singleton"
+    ],
+    "suit_role": "side_suit"
+   },
+   "hand_strength": "any",
+   "scoring": "both"
+  },
+  "recommendation": {
+   "lead_suit": "side-suit singleton",
+   "card": "singleton",
+   "text": "Against a suit contract with no other clear lead, a singleton can win a ruff."
+  },
+  "preference_over": [
+   "low from Hxxxx",
+   "honour sequence"
+  ],
+  "weight": 0.6,
+  "evidence": {
+   "type": "author_advice"
+  },
+  "source": {
+   "book": "",
+   "book_key": "sample",
+   "chapter": 0,
+   "page": 0
+  }
+ },
+ {
+  "id": "SU-002",
+  "contract_type": "suit",
+  "conditions": {
+   "level": "game",
+   "auction": {
+    "features": [
+     "one_suit_auction"
+    ],
+    "sequences": [
+     "1S-2S-4S",
+     "1S-3S-4S"
+    ]
+   },
+   "holding": {
+    "patterns": [
+     "xx"
+    ],
+    "suit_role": "side_suit"
+   },
+   "hand_strength": "any",
+   "scoring": "both"
+  },
+  "recommendation": {
+   "lead_suit": "spot-card doubleton",
+   "card": "top of doubleton",
+   "text": "Lead the top card from a small doubleton."
+  },
+  "preference_over": [
+   "low from Jxxx",
+   "low from KTxxx"
+  ],
+  "weight": 0.6,
+  "evidence": {
+   "type": "author_advice"
+  },
+  "source": {
+   "book": "",
+   "book_key": "sample",
+   "chapter": 0,
+   "page": 0
+  }
+ },
+ {
+  "id": "SU-021",
+  "contract_type": "suit",
+  "conditions": {
+   "level": "any",
+   "auction": {
+    "features": [
+     "any_suit"
+    ],
+    "sequences": []
+   },
+   "holding": {
+    "patterns": [
+     "KQx",
+     "QJx"
+    ],
+    "suit_role": "side_suit"
+   },
+   "hand_strength": "any",
+   "scoring": "both"
+  },
+  "recommendation": {
+   "lead_suit": "short honour sequence",
+   "card": "top honour",
+   "text": "From two touching honours with a small card, lead the top honour."
+  },
+  "preference_over": [
+   "low from Qxx"
+  ],
+  "weight": 0.6,
+  "evidence": {
+   "type": "author_advice"
+  },
+  "source": {
+   "book": "",
+   "book_key": "sample",
+   "chapter": 0,
+   "page": 0
+  }
+ },
+ {
+  "id": "SU-079",
+  "contract_type": "suit",
+  "conditions": {
+   "level": "small_slam",
+   "auction": {
+    "features": [
+     "small_slam"
+    ],
+    "sequences": [
+     "1H-...-6H",
+     "1S-...-6S"
+    ]
+   },
+   "holding": {
+    "patterns": [
+     "xxx",
+     "xx",
+     "xxxx"
+    ],
+    "suit_role": "side_suit"
+   },
+   "hand_strength": "any",
+   "scoring": "both"
+  },
+  "recommendation": {
+   "lead_suit": "passive side suit",
+   "card": "low",
+   "text": "Against a small slam with nothing better, a passive lead from small cards gives nothing away."
+  },
+  "preference_over": [
+   "low from Kxxx",
+   "ace without length"
+  ],
+  "weight": 0.6,
+  "evidence": {
+   "type": "author_advice"
+  },
+  "source": {
+   "book": "",
+   "book_key": "sample",
+   "chapter": 0,
+   "page": 0
+  }
+ },
+ {
+  "id": "SU-068",
+  "contract_type": "suit",
+  "conditions": {
+   "level": "any",
+   "auction": {
+    "features": [
+     "any_suit"
+    ],
+    "sequences": []
+   },
+   "holding": {
+    "patterns": [
+     "trump: Axx",
+     "trump: Axxx",
+     "trump: AJx",
+     "trump: ATx"
+    ],
+    "suit_role": "trump"
+   },
+   "hand_strength": "any",
+   "scoring": "both"
+  },
+  "recommendation": {
+   "lead_suit": "trump",
+   "card": "low (not the ace)",
+   "text": "With the trump ace and small trumps, lead a low trump rather than the ace."
+  },
+  "preference_over": [
+   "trump ace"
+  ],
+  "weight": 0.6,
+  "evidence": {
+   "type": "author_advice"
+  },
+  "source": {
+   "book": "",
+   "book_key": "sample",
+   "chapter": 0,
+   "page": 0
+  }
+ }
+]

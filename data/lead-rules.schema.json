@@ -1,0 +1,411 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://bridge-matey.local/trainer-spec/lead-rules.schema.json",
+ "title": "Opening-lead rules (rule format; the public snapshot ships a small sample set)",
+ "type": "array",
+ "minItems": 1,
+ "items": {
+  "$ref": "#/$defs/rule"
+ },
+ "$defs": {
+  "leadStat": {
+   "type": "object",
+   "required": [
+    "lead",
+    "beat_pct",
+    "avg_tricks"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "lead": {
+     "type": "string",
+     "pattern": "^[♠♥♦♣]"
+    },
+    "beat_pct": {
+     "type": "number",
+     "minimum": 0,
+     "maximum": 100
+    },
+    "avg_tricks": {
+     "type": "number",
+     "minimum": 0,
+     "maximum": 13
+    }
+   }
+  },
+  "detail": {
+   "type": "object",
+   "required": [
+    "kind",
+    "book",
+    "page",
+    "stat",
+    "rec"
+   ],
+   "properties": {
+    "kind": {
+     "enum": [
+      "simulation",
+      "quiz"
+     ]
+    },
+    "book": {
+     "enum": [
+      "nt",
+      "suit"
+     ]
+    },
+    "page": {
+     "type": "integer"
+    },
+    "hand_no": {
+     "type": "integer"
+    },
+    "quiz_no": {
+     "type": "integer"
+    },
+    "test_id": {
+     "type": "string"
+    },
+    "table_index": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "table_label": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "west": {
+     "type": "string",
+     "pattern": "^S:([AKQJT2-9]+|-) H:([AKQJT2-9]+|-) D:([AKQJT2-9]+|-) C:([AKQJT2-9]+|-)$"
+    },
+    "stat": {
+     "type": "string"
+    },
+    "rec": {
+     "$ref": "#/$defs/leadStat"
+    },
+    "vs": {
+     "oneOf": [
+      {
+       "$ref": "#/$defs/leadStat"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    }
+   }
+  },
+  "rule": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "id",
+    "contract_type",
+    "conditions",
+    "recommendation",
+    "preference_over",
+    "weight",
+    "evidence",
+    "source"
+   ],
+   "properties": {
+    "id": {
+     "type": "string",
+     "pattern": "^(NT|SU|MP)-[0-9]{3}$"
+    },
+    "contract_type": {
+     "enum": [
+      "NT",
+      "suit"
+     ]
+    },
+    "conditions": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "level",
+      "auction",
+      "holding",
+      "hand_strength",
+      "scoring"
+     ],
+     "properties": {
+      "level": {
+       "enum": [
+        "partscore",
+        "game",
+        "small_slam",
+        "grand_slam",
+        "any"
+       ]
+      },
+      "contracts": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "pattern": "^[1-7](NT|S|H|D|C)X{0,2}$"
+       }
+      },
+      "auction": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "features",
+        "sequences"
+       ],
+       "properties": {
+        "features": {
+         "type": "array",
+         "minItems": 1,
+         "items": {
+          "enum": [
+           "1NT-3NT",
+           "1NT_overcall",
+           "1NT_passout",
+           "2NT-3NT",
+           "2NT_passout",
+           "6NT",
+           "accepted",
+           "any_NT",
+           "any_suit",
+           "bypassed_blackwood",
+           "competitive_partscore",
+           "cue_bid_auction",
+           "declarer_opened_1NT",
+           "declarer_two_suiter",
+           "dummy_bid_side_suit",
+           "dummy_promised_shortness",
+           "dummy_showed_ace",
+           "dummy_suit_breaks_well",
+           "few_entries",
+           "grand_slam",
+           "limit_raise_2NT",
+           "mp_scoring",
+           "no_stayman",
+           "no_transfer",
+           "one_suit_auction",
+           "opener_suit_known",
+           "opponents_avoided_slam",
+           "opponents_bid_one_suit",
+           "opponents_bid_two_suits",
+           "own_suit_raised",
+           "partner_bid_suit",
+           "partner_opened_minor",
+           "partner_opened_weak_two",
+           "partner_overcall_1level",
+           "partner_passed_as_dealer",
+           "partscore",
+           "preemptive_raise",
+           "responder_preferred_second_suit",
+           "sacrifice",
+           "small_slam",
+           "splinter",
+           "stayman_denied_major",
+           "stayman_major_shown",
+           "stayman_used",
+           "strong_hand",
+           "transfer",
+           "undisciplined_slam",
+           "void_held",
+           "we_doubled",
+           "we_overcalled",
+           "weak_hand"
+          ]
+         }
+        },
+        "sequences": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         },
+         "description": "Illustrative auctions; opponents' calls in parentheses when we are in the auction"
+        }
+       }
+      },
+      "holding": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "patterns",
+        "suit_role"
+       ],
+       "properties": {
+        "patterns": {
+         "type": "array",
+         "minItems": 1,
+         "items": {
+          "type": "string",
+          "minLength": 1
+         },
+         "description": "Compact notation: A K Q J T = honours, x = spot card, H = any honour; 'trump: ...' marks the trump holding; parenthetical notes name the suit role"
+        },
+        "suit_role": {
+         "enum": [
+          "any",
+          "declarer_second_suit",
+          "declarer_suit",
+          "dummy_suit",
+          "long suit",
+          "major",
+          "minor",
+          "own suit",
+          "own_bid_suit",
+          "partner_suit",
+          "side_suit",
+          "trump",
+          "unbid_major",
+          "unbid_suit"
+         ]
+        }
+       }
+      },
+      "hand_strength": {
+       "enum": [
+        "any",
+        "weak",
+        "strong"
+       ]
+      },
+      "scoring": {
+       "enum": [
+        "IMPs",
+        "MPs",
+        "both"
+       ]
+      }
+     }
+    },
+    "recommendation": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "lead_suit",
+      "card",
+      "text"
+     ],
+     "properties": {
+      "lead_suit": {
+       "type": "string"
+      },
+      "card": {
+       "type": "string"
+      },
+      "text": {
+       "type": "string",
+       "minLength": 10
+      }
+     }
+    },
+    "preference_over": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "weight": {
+     "type": "number",
+     "minimum": 0,
+     "maximum": 1
+    },
+    "evidence": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "type",
+      "stat",
+      "sample_size",
+      "details"
+     ],
+     "properties": {
+      "type": {
+       "enum": [
+        "simulation",
+        "author_advice"
+       ]
+      },
+      "stat": {
+       "type": [
+        "string",
+        "null"
+       ]
+      },
+      "sample_size": {
+       "type": [
+        "integer",
+        "null"
+       ]
+      },
+      "sample_unit": {
+       "type": "string"
+      },
+      "details": {
+       "type": "array",
+       "items": {
+        "$ref": "#/$defs/detail"
+       }
+      }
+     },
+     "if": {
+      "properties": {
+       "type": {
+        "const": "simulation"
+       }
+      }
+     },
+     "then": {
+      "properties": {
+       "stat": {
+        "type": "string"
+       },
+       "details": {
+        "minItems": 1
+       }
+      }
+     }
+    },
+    "source": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "book",
+      "book_key",
+      "chapter",
+      "page"
+     ],
+     "properties": {
+      "book": {
+       "type": "string"
+      },
+      "book_key": {
+       "enum": [
+        "nt",
+        "suit",
+        "mpd"
+       ]
+      },
+      "chapter": {
+       "type": "integer"
+      },
+      "chapter_title": {
+       "type": "string"
+      },
+      "page": {
+       "type": "integer",
+       "minimum": 1
+      },
+      "evidence_pages": {
+       "type": "array",
+       "items": {
+        "type": "integer"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

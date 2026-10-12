@@ -1,0 +1,222 @@
+{
+ "title": "Sample opening-lead card choice by holding (standard leading conventions, written for the public snapshot)",
+ "notation": "A K Q J T = honours (T = ten), x = spot card.",
+ "holdings": [
+  {
+   "holding": "AK (doubleton)",
+   "vs_NT": {
+    "card": "A, then K"
+   },
+   "vs_suit": {
+    "card": "A"
+   }
+  },
+  {
+   "holding": "AKx / AKxx",
+   "vs_NT": {
+    "card": "A"
+   },
+   "vs_suit": {
+    "card": "A"
+   }
+  },
+  {
+   "holding": "AKxxx",
+   "vs_NT": {
+    "card": "A"
+   },
+   "vs_suit": {
+    "card": "A"
+   }
+  },
+  {
+   "holding": "Axxx / Axxxx",
+   "vs_NT": {
+    "card": "4th best"
+   },
+   "vs_suit": {
+    "card": "A"
+   }
+  },
+  {
+   "holding": "Axx",
+   "vs_NT": {
+    "card": "low"
+   },
+   "vs_suit": {
+    "card": "A"
+   }
+  },
+  {
+   "holding": "Ax",
+   "vs_NT": {
+    "card": "A"
+   },
+   "vs_suit": {
+    "card": "A"
+   }
+  },
+  {
+   "holding": "singleton A",
+   "vs_NT": {
+    "card": "A"
+   },
+   "vs_suit": {
+    "card": "A"
+   }
+  },
+  {
+   "holding": "KQJ / KQJx / KQJxx",
+   "vs_NT": {
+    "card": "K"
+   },
+   "vs_suit": {
+    "card": "K"
+   }
+  },
+  {
+   "holding": "KQxx",
+   "vs_NT": {
+    "card": "K"
+   },
+   "vs_suit": {
+    "card": "K"
+   }
+  },
+  {
+   "holding": "KQx",
+   "vs_NT": {
+    "card": "K"
+   },
+   "vs_suit": {
+    "card": "K"
+   }
+  },
+  {
+   "holding": "KQ (doubleton)",
+   "vs_NT": {
+    "card": "K"
+   },
+   "vs_suit": {
+    "card": "K"
+   }
+  },
+  {
+   "holding": "KJTx / KJTxx",
+   "vs_NT": {
+    "card": "J"
+   },
+   "vs_suit": {
+    "card": "J"
+   }
+  },
+  {
+   "holding": "Kxx / Kxxx / Kxxxx",
+   "vs_NT": {
+    "card": "low / 4th best"
+   },
+   "vs_suit": {
+    "card": "low"
+   }
+  },
+  {
+   "holding": "Kx",
+   "vs_NT": {
+    "card": "K"
+   },
+   "vs_suit": {
+    "card": "K"
+   }
+  },
+  {
+   "holding": "QJT / QJTx / QJTxx",
+   "vs_NT": {
+    "card": "Q"
+   },
+   "vs_suit": {
+    "card": "Q"
+   }
+  },
+  {
+   "holding": "QJxx / QJx",
+   "vs_NT": {
+    "card": "Q"
+   },
+   "vs_suit": {
+    "card": "Q"
+   }
+  },
+  {
+   "holding": "Qxx / Qxxx",
+   "vs_NT": {
+    "card": "low / 4th best"
+   },
+   "vs_suit": {
+    "card": "low"
+   }
+  },
+  {
+   "holding": "Qx",
+   "vs_NT": {
+    "card": "Q"
+   },
+   "vs_suit": {
+    "card": "Q"
+   }
+  },
+  {
+   "holding": "JTx / JTxx / JT9x",
+   "vs_NT": {
+    "card": "J"
+   },
+   "vs_suit": {
+    "card": "J"
+   }
+  },
+  {
+   "holding": "Jxx / Jxxx",
+   "vs_NT": {
+    "card": "low / 4th best"
+   },
+   "vs_suit": {
+    "card": "low"
+   }
+  },
+  {
+   "holding": "xx",
+   "vs_NT": {
+    "card": "top"
+   },
+   "vs_suit": {
+    "card": "top"
+   }
+  },
+  {
+   "holding": "xxx",
+   "vs_NT": {
+    "card": "low"
+   },
+   "vs_suit": {
+    "card": "low"
+   }
+  },
+  {
+   "holding": "xxxx / xxxxx",
+   "vs_NT": {
+    "card": "4th best / low"
+   },
+   "vs_suit": {
+    "card": "low"
+   }
+  },
+  {
+   "holding": "singleton",
+   "vs_NT": {
+    "card": "the singleton"
+   },
+   "vs_suit": {
+    "card": "the singleton"
+   }
+  }
+ ]
+}

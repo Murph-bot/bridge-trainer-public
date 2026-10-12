@@ -1,0 +1,68 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "system.schema.json",
+ "title": "Bridge bidding system (rules for bidding and auction-to-constraints)",
+ "type": "object",
+ "required": ["meta", "rules"],
+ "additionalProperties": false,
+ "properties": {
+  "$schema": {"type": "string"},
+  "meta": {"type": "object", "required": ["name", "version", "profile", "constraintConventions"]},
+  "rules": {"type": "array", "items": {"$ref": "#/$defs/rule"}},
+  "carding": {"type": "object"},
+  "conventionsWithoutPatterns": {"type": "array"}
+ },
+ "$defs": {
+  "call": {"type": "string", "pattern": "^([1-7][CDHSN]|P|X|XX)$"},
+  "suit": {"enum": ["S", "H", "D", "C"]},
+  "range": {"type": "array", "items": {"type": "integer", "minimum": 0, "maximum": 37}, "minItems": 2, "maxItems": 2},
+  "lenRange": {"type": "array", "items": {"type": "integer", "minimum": 0, "maximum": 13}, "minItems": 2, "maxItems": 2},
+  "feature": {"type": "string", "pattern": "^((single|void|short|stopper|noTopHonors|goodSuit|solidSuit|topHonor):(S|H|D|C|any)|noSingleton|aces:[0-4](\\|[0-4])*)$"},
+  "constraintSet": {
+   "type": "object",
+   "additionalProperties": false,
+   "properties": {
+    "hcp": {"$ref": "#/$defs/range"},
+    "len": {"type": "object", "additionalProperties": false, "properties": {"S": {"$ref": "#/$defs/lenRange"}, "H": {"$ref": "#/$defs/lenRange"}, "D": {"$ref": "#/$defs/lenRange"}, "C": {"$ref": "#/$defs/lenRange"}}},
+    "shape": {"enum": ["balanced", "semibalanced", "unbalanced", "any"]},
+    "lenCmp": {"type": "array", "items": {"type": "array", "prefixItems": [{"$ref": "#/$defs/suit"}, {"enum": [">", ">=", "="]}, {"$ref": "#/$defs/suit"}], "minItems": 3, "maxItems": 3}},
+    "features": {"type": "array", "items": {"$ref": "#/$defs/feature"}},
+    "hcpPlusLen": {"type": "object", "required": ["suit", "min"], "additionalProperties": false, "properties": {"suit": {"$ref": "#/$defs/suit"}, "min": {"type": "integer"}}},
+    "keycards": {"type": "object", "required": ["trump", "oneOf"], "additionalProperties": false, "properties": {"trump": {"$ref": "#/$defs/suit"}, "oneOf": {"type": "array", "items": {"type": "integer", "minimum": 0, "maximum": 5}}}},
+    "trumpQueen": {"type": "boolean"},
+    "kings": {"type": "object", "properties": {"oneOf": {"type": "array", "items": {"type": "integer"}}}},
+    "anyOf": {"type": "array", "items": {"$ref": "#/$defs/constraintSet"}, "minItems": 1},
+    "notAny": {"type": "array", "items": {"$ref": "#/$defs/constraintSet"}, "minItems": 1}
+   }
+  },
+  "rule": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": ["id", "category", "context", "call", "meaning", "shows", "forcing", "alertable", "artificial", "priority", "inferable", "source", "confidence"],
+   "properties": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9.\\-]+$"},
+    "category": {"enum": ["opening", "response", "opener-rebid", "responder-rebid", "nt-structure", "strong-2c", "weak-two", "preempt", "competitive-overcall", "competitive-balancing", "competitive-vs-1nt", "competitive-vs-preempt", "competitive-responder", "competitive-opener", "competitive-advance", "slam", "defensive-doubles"]},
+    "context": {
+     "type": "object", "required": ["auction"], "additionalProperties": false,
+     "properties": {
+      "auction": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^(P\\*|[1-7][CDHSN]|P|X|XX|\\?)$"}},
+      "seats": {"type": "array", "items": {"type": "integer", "minimum": 1, "maximum": 4}},
+      "actorPassedHand": {"type": "boolean"},
+      "vul": {"enum": ["any", "none-vul", "we-vul", "they-vul", "both-vul", "favourable", "unfavourable"]}
+     }
+    },
+    "call": {"$ref": "#/$defs/call"},
+    "meaning": {"type": "object", "required": ["en"], "properties": {"en": {"type": "string"}, "el": {"type": "string"}}},
+    "shows": {"$ref": "#/$defs/constraintSet"},
+    "forcing": {"enum": ["NF", "invite", "F1", "GF", "relay", "asking", "response", "signoff", "forcing-pass", "pass-or-correct"]},
+    "alertable": {"type": "boolean"},
+    "artificial": {"type": "boolean"},
+    "priority": {"type": "integer", "minimum": 0, "maximum": 100},
+    "inferable": {"type": "boolean"},
+    "source": {"type": "object", "required": ["file", "section"], "properties": {"file": {"type": "string"}, "section": {"type": "string"}}},
+    "confidence": {"enum": ["source", "source-interpreted", "default-assumed"]},
+    "notes": {"type": "string"}
+   }
+  }
+ }
+}
