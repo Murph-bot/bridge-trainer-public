@@ -75,8 +75,8 @@ describe("lead texts", () => {
     expect(leadText("TS")).toBe("♠10");
     expect(leadText("AC")).toBe("♣A");
   });
-  it.skipIf(!HAS_BOOK_PROBLEMS)("builds a South-declared problem for West from nt-p20-q1", () => {
-    const b = buildProblem(usable.find((t) => t.id === "nt-p20-q1")!);
+  it.skipIf(!HAS_BOOK_PROBLEMS)("builds a South-declared problem for West from a 1NT-3NT problem of the pack", () => {
+    const b = buildProblem(usable.find((t) => t.id.startsWith("nt-") && buildProblem(t).problem.auction.join(" ") === "1N P 3N P P P")!);
     expect(b.problem.auction).toEqual(["1N", "P", "3N", "P", "P", "P"]);
     expect(b.problem.dealer).toBe("S");
     expect(b.problem.hand).toHaveLength(13);
@@ -96,7 +96,7 @@ describe("summary", () => {
   });
 });
 
-describe.skipIf(!HAS_BOOK_PROBLEMS)("acceptance: T10 known lead problems (fast subset; the full 771 run is `npm run eval:leads`)", () => {
+describe.skipIf(!HAS_BOOK_PROBLEMS)("acceptance: T10 known lead problems (fast subset; the full run is `npm run eval:leads`)", () => {
   const pool = createNodePool(4);
   afterAll(() => pool.dispose());
   const subset = Array.from({ length: 10 }, (_, i) => usable[Math.floor((i * usable.length) / 10)]!);

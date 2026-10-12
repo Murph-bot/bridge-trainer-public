@@ -11,7 +11,7 @@ beforeAll(async () => {
 });
 
 const problem: LeadProblem = {
-  hand: parseSymbolHand("QJ1094 ♠ K82 ♥ 963 ♦ 75 ♣"),
+  hand: parseSymbolHand("QJ1095 ♠ K74 ♥ 852 ♦ 63 ♣"),
   auction: calls("1N P 3N P P P"),
   dealer: "N",
   vul: "none",

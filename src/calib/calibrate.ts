@@ -15,7 +15,7 @@ import type { Rebuilt } from "./rebuild.ts";
 
 export type Split = "odd" | "even";
 
-/** Parity of the trailing integer of the problem id: nt-p20-q1 -> 1 -> odd (fit); ...-q2 -> even (report only). */
+/** Parity of the trailing integer of the problem id: nt-x-q1 -> 1 -> odd (fit); ...-q2 -> even (report only). */
 export function splitOf(id: string): Split {
   const m = /(\d+)$/.exec(id);
   if (!m) throw new Error(`problem id ${id} has no trailing integer`);
@@ -187,7 +187,7 @@ export function runCalibration(cache: CalibCache, book: Rulebook, o: CalibrateOp
     "",
     "## Split",
     "",
-    `By the parity of the trailing integer of the problem id (nt-p20-q1 -> 1 -> odd): **${nOdd} odd problems** (fitting and cross-validation only), **${nEven} even problems** (held-out report only; never used for any choice).`,
+    `By the parity of the trailing integer of the problem id (nt-x-q1 -> 1 -> odd): **${nOdd} odd problems** (fitting and cross-validation only), **${nEven} even problems** (held-out report only; never used for any choice).`,
     "",
     "## Fitted values",
     "",

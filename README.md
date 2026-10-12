@@ -4,12 +4,24 @@ Local opening-lead trainer (TypeScript + Vite). Greek UI by default, English tog
 
 ## Public snapshot: book content excluded
 
-This repository is a clean public snapshot. The book test set and all book-derived lead data are **not included**:
-`data/lead-test-problems.json` (book quiz and worked-example hands), `data/lead-books-summary.md`, `data/lead-weights.md`
-and `data/lead-rules.phase5.json` are removed. `data/lead-rules.json` and `data/lead-card-choice.json` are small sample
-files written for this snapshot (standard leading conventions, no book text, hands or statistics), and the rulings overlay
-is filtered to match. Tests that need the full private data skip themselves (`src/test-support/book-data.ts`), and
-`npm run eval:leads` / `npm run calibrate` need the excluded test set.
+This repository contains no book content. `data/lead-rules.json` (8 rules) and `data/lead-card-choice.json` are small
+sample files written for this snapshot (standard leading conventions, no book text, hands or statistics); the book test
+set (`lead-test-problems.json`) is not included. Without the private data pack, tests that need it skip themselves
+and `npm run eval:leads` / `npm run calibrate` cannot run.
+
+### Private data pack (optional, access required)
+
+Setup, from the repo root (one line):
+
+```bash
+gh repo clone Murph-bot/bridge-trainer-bookdata data/private
+```
+
+or point `BRIDGE_DATA_DIR` at a checkout of the pack. When `data/private/lead-rules.json` (or
+`$BRIDGE_DATA_DIR/lead-rules.json`) exists, `lead-rules.json`, `lead-card-choice.json`, `lead-rules-rulings-01.json` and
+`lead-test-problems.json` are read from the pack instead of `data/`: by `npm run dev` / `npm run build` (Vite plugin,
+resolved at build time), `npm test` (Vitest), `npm run eval:leads` / `calibrate` / `eval:group` (esbuild + tsx hook).
+See `scripts/data-pack.mjs`. `data/private/` is gitignored; never commit the pack here.
 
 ## Requirements
 
@@ -18,7 +30,7 @@ is filtered to match. Tests that need the full private data skip themselves (`sr
 ## Start locally
 
 ```bash
-cd /Users/sotirios/dev/bridge-trainer
+cd bridge-trainer-public
 npm install
 npm run dev
 ```

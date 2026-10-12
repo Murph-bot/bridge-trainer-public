@@ -95,7 +95,7 @@ const profiles = profilesOf({ N: "opps", S: "opps", E: "ss", W: "ss" });
 const contract = finalContract(AUCTION, "N")!;
 const job = (over: Partial<LeadJob> = {}): LeadJob => ({
   seed: 2026,
-  known: { seat: "E", cards: parseSymbolHand("QJ1094 ♠ K82 ♥ 963 ♦ 75 ♣") },
+  known: { seat: "E", cards: parseSymbolHand("QJ1095 ♠ K74 ♥ 852 ♦ 63 ♣") },
   constraints: inferConstraints({ auction: AUCTION, dealer: "N", leader: "E", profiles }),
   contract,
   leader: "E",

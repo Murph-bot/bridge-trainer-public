@@ -54,4 +54,4 @@ REMOVE: "any 5-level+ suit after 4NT". The keycard replies are counted via the a
 - Mark the rest of the config approved, except bias sizes labelled "proposal", which stay proposals.
 
 ## Reporting
-Send the 771-problem eval disagreements to Bridge Matey grouped by rule id.
+Send the full-eval disagreements to Bridge Matey grouped by rule id.

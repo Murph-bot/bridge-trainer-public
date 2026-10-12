@@ -10,7 +10,7 @@ import { FEATURE_NAMES } from "./features.ts";
 import { parseCardSelector, parseDescriptor, parseHolding } from "./patterns.ts";
 import type { LeadContext, Scoring } from "./types.ts";
 
-const HAND = parseSymbolHand("QJ1094 ♠ K82 ♥ 963 ♦ 75 ♣");
+const HAND = parseSymbolHand("QJ1095 ♠ K74 ♥ 852 ♦ 63 ♣");
 const ctx = (auction: string, dealer: "N" | "E" | "S" | "W" = "N", scoring: Scoring = "IMP", hand = HAND, disciplined = false): LeadContext =>
   deriveContext({ hand, auction: calls(auction), dealer, vul: "none", scoring, disciplined }, LEAD_CONFIG);
 const on = (c: LeadContext): string[] => [...c.features].sort();
@@ -41,7 +41,7 @@ describe("auction features", () => {
     expect(c.roles.dummy).toEqual(["H"]);
     expect(c.features.has("dummy_bid_side_suit")).toBe(true);
     expect(c.features.has("dummy_suit_breaks_well")).toBe(false);
-    expect(ctx("1N P 2D P 2H P 3N P P P", "N", "IMP", parseSymbolHand("QJ1094 ♠ K8 ♥ 9632 ♦ 75 ♣")).features.has("dummy_suit_breaks_well")).toBe(true);
+    expect(ctx("1N P 2D P 2H P 3N P P P", "N", "IMP", parseSymbolHand("QJ1095 ♠ K7 ♥ 8542 ♦ 63 ♣")).features.has("dummy_suit_breaks_well")).toBe(true);
     expect(c.roles.unbid).toEqual(["S", "D", "C"]);
   });
   it("1NT-2NT-3NT: limit raise, accepted", () => {
@@ -87,7 +87,7 @@ describe("auction features", () => {
     expect(c.roles.partner).toEqual(["H"]);
   });
   it("hand strength, MP scoring and void features", () => {
-    expect(ctx("1N P 3N P P P", "N", "IMP", parseSymbolHand("QJ1094 ♠ K82 ♥ J63 ♦ 75 ♣")).handStrength).toBe("normal");
+    expect(ctx("1N P 3N P P P", "N", "IMP", parseSymbolHand("QJ1095 ♠ K74 ♥ J52 ♦ 63 ♣")).handStrength).toBe("normal");
     const weak = parseSymbolHand("J5432 ♠ 7632 ♥ 984 ♦ 5 ♣");
     const c = ctx("1N P 3N P P P", "N", "MP", weak);
     expect(c.handStrength).toBe("weak");

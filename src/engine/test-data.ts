@@ -15,7 +15,7 @@ export const profilesOf = (p: Record<Seat, string>): Record<Seat, SystemFile> =>
 
 export const calls = (s: string): Call[] => s.split(" ") as Call[];
 
-/** "QJ1094 ♠ K82 ♥ 963 ♦ 75 ♣" -> cards */
+/** "QJ1095 ♠ K74 ♥ 852 ♦ 63 ♣" -> cards */
 export function parseSymbolHand(txt: string): Card[] {
   const m = txt.split(" ");
   const bySuit: Record<string, string> = {};

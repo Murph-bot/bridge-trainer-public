@@ -18,11 +18,11 @@ import { tieBreakSet } from "../lead/config.ts";
 
 describe("split by the parity of the trailing integer of the id", () => {
   it.each([
-    ["nt-p20-q1", "odd"],
-    ["nt-p20-q2", "even"],
-    ["suit-p37-h23", "odd"],
-    ["suit-p120-h10", "even"],
-    ["nt-p41-q12", "even"],
+    ["nt-x20-q1", "odd"],
+    ["nt-x20-q2", "even"],
+    ["suit-x37-h23", "odd"],
+    ["suit-x120-h10", "even"],
+    ["nt-x41-q12", "even"],
   ])("%s -> %s", (id, want) => expect(splitOf(id)).toBe(want));
   it("rejects ids without a trailing integer", () => expect(() => splitOf("nt-x")).toThrow("trailing integer"));
 });
@@ -58,8 +58,8 @@ const near = (id: string, rule: string, rec: 0 | 1, accepted: 0 | 1): Item[] => 
 describe("fitting on synthetic problems", () => {
   const families = new Map([["NT-001", "nt"], ["SU-001", "suit"]]);
   const items = [
-    ...Array.from({ length: 30 }, (_, i) => near(`nt-p1-q${2 * i + 1}`, "NT-001", 1, 1)).flat(),
-    ...Array.from({ length: 30 }, (_, i) => near(`suit-p1-q${2 * i + 1}`, "SU-001", 1, 0)).flat(),
+    ...Array.from({ length: 30 }, (_, i) => near(`nt-x1-q${2 * i + 1}`, "NT-001", 1, 1)).flat(),
+    ...Array.from({ length: 30 }, (_, i) => near(`suit-x1-q${2 * i + 1}`, "SU-001", 1, 0)).flat(),
   ];
   it("a helpful rule family gets a positive weight, a harmful one is dropped", () => {
     const f = fitWithDrops(items, families, ["nt", "suit"], []);
@@ -77,8 +77,8 @@ describe("fitting on synthetic problems", () => {
   it("a separate per-form fit is kept only when it beats the joint fit in the outer cross-validation", () => {
     // NT-001 is right at IMPs and wrong at MPs: jointly it nets out and is dropped; IMPs alone want it, MPs alone do not.
     const mixed = Array.from({ length: 40 }, (_, i) => {
-      const [imp] = near(`nt-p2-q${2 * i + 1}`, "NT-001", 1, 1);
-      const [, mp] = near(`nt-p2-q${2 * i + 1}`, "NT-001", 1, 0);
+      const [imp] = near(`nt-x2-q${2 * i + 1}`, "NT-001", 1, 1);
+      const [, mp] = near(`nt-x2-q${2 * i + 1}`, "NT-001", 1, 0);
       return [imp!, mp!];
     }).flat();
     const c = chooseForms(mixed, families, ["nt", "suit"], [], 1.5);
@@ -101,7 +101,8 @@ describe.skipIf(!HAS_BOOK_PROBLEMS)("calibration from a cache produced by the ev
   const pool = createNodePool(4);
   afterAll(() => pool.dispose());
   const tests = ((HAS_BOOK_PROBLEMS ? JSON.parse(readFileSync(PROBLEMS_URL, "utf8")) : { tests: [] }) as { tests: TestProblem[] }).tests.filter((t) => t.usable_as_acceptance_test);
-  const subset = ["nt-p20-q1", "nt-p20-q2", "suit-p51-q2", "suit-p51-q1"].map((id) => tests.find((t) => t.id === id)!);
+  const pick = (prefix: string) => tests.filter((t) => t.id.startsWith(prefix)).slice(0, 2);
+  const subset = [...pick("nt-"), ...pick("suit-")];
   it("reproduces every evaluated mode from the cached DD vectors, recomputing the rules", async () => {
     const book = defaultRulebook();
     const entries = [];

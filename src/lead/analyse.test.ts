@@ -16,7 +16,7 @@ beforeAll(async () => {
 
 const profiles = profilesOf({ N: "opps", S: "opps", E: "ss", W: "ss" });
 const nt: LeadProblem = {
-  hand: parseSymbolHand("QJ1094 ♠ K82 ♥ 963 ♦ 75 ♣"),
+  hand: parseSymbolHand("QJ1095 ♠ K74 ♥ 852 ♦ 63 ♣"),
   auction: calls("1N P 3N P P P"),
   dealer: "N",
   vul: "none",
@@ -82,7 +82,7 @@ describe("analyse", () => {
     expect(a.rate.decision).toMatchObject({ metric: "IMP", noiseK: 1.5, userStatus: "top", ddBest: "QS", top: "QS", ruleIds: [] });
     expect(a.rate.ratingPct).toBe(100);
     expect(a.explanation.verdict.key).toBe("explain.verdict.ddBest");
-    const other = await analyse({ ...nt, userCard: "7C" }, pool, { settings: { deals: 50, seed: 7 } });
+    const other = await analyse({ ...nt, userCard: "6C" }, pool, { settings: { deals: 50, seed: 7 } });
     expect(other.rate.decision!.userStatus).not.toBe("top");
     expect(other.rate.ratingPct).toBeLessThan(100);
     expect(other.rate.options.map((o) => o.card)[0]).toBe("QS");
@@ -101,13 +101,13 @@ describe("analyse", () => {
     expect({ pct: a.rate.ratingPct, p: Number(a.rate.pDefUser.toFixed(4)), e: Number(a.rate.eDefUser.toFixed(4)), best: a.rate.bestCard, top: a.rate.top.map((t) => t.card) }).toMatchInlineSnapshot(`
       {
         "best": "QS",
-        "e": 3.16,
+        "e": 3.12,
         "p": 0.225,
         "pct": 70,
         "top": [
           "QS",
-          "4S",
-          "7C",
+          "5S",
+          "6C",
         ],
       }
     `);

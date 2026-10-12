@@ -7,7 +7,7 @@ describe("acceptance: T5 hand predicates", () => {
   it("hcp counts 4-3-2-1", () => {
     expect(info("AKQJ.AKQ.AK.AKQ").hcp).toBe(35);
     expect(info("T98.T98.T98.T982").hcp).toBe(0);
-    expect(info("QJ1094.K82.963.75").hcp).toBe(6);
+    expect(info("QJ1095.K74.852.63").hcp).toBe(6);
   });
   it("stopper:S true for Kx, false for Qx; Qxx and Jxxx are stoppers, Kx alone is not a singleton K", () => {
     expect(featureHolds("stopper:S", info("K2.AQ3.K54.AJ987"))).toBe(true);

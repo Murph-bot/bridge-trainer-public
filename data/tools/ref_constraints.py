@@ -276,7 +276,7 @@ def summarize(P):
 
 EXAMPLES = [
     {"id": "ex1-1NT-3NT", "dealer": "N", "auction": "1N P 3N P P P", "leader": "E",
-     "leaderHand": "QJ1094 ♠ K82 ♥ 963 ♦ 75 ♣", "profiles": {"N": "opps", "S": "opps", "E": "ss", "W": "ss"}},
+     "leaderHand": "QJ1095 ♠ K74 ♥ 852 ♦ 63 ♣", "profiles": {"N": "opps", "S": "opps", "E": "ss", "W": "ss"}},
     {"id": "ex2-1S-2S-4S", "dealer": "S", "auction": "1S P 2S P 4S P P P", "leader": "W",
      "leaderHand": "K73 ♠ AJ104 ♥ Q92 ♦ 853 ♣", "profiles": {"N": "opps", "S": "opps", "E": "ss", "W": "ss"}},
     {"id": "ex3-competitive-1H-2C-2H-P-4H", "dealer": "N", "auction": "1H 2C 2H P 4H P P P", "leader": "E",

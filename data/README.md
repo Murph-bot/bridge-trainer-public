@@ -1,6 +1,6 @@
 # Bridge trainer: bridge-logic spec (v1 = opening-lead trainer)
 
-For Javier, coding a local-only TypeScript web app in `/Users/sotirios/dev/bridge-trainer/`. The user gets a hand and a finished auction (typed in or random), picks an opening lead, and sees a rating % and P(defeat) from Monte Carlo deals solved double dummy. Later versions add bidding practice (the app bids for partner and opponents) and a bidding quiz (4 candidate bids rated 1–10). The system files are built to drive those too: the `priority` field picks a bid, `shows` describes it.
+For Javier, coding a local-only TypeScript web app in this repository. The user gets a hand and a finished auction (typed in or random), picks an opening lead, and sees a rating % and P(defeat) from Monte Carlo deals solved double dummy. Later versions add bidding practice (the app bids for partner and opponents) and a bidding quiz (4 candidate bids rated 1–10). The system files are built to drive those too: the `priority` field picks a bid, `shows` describes it.
 
 No cloud services, no runtime AI. Everything is deterministic given a seed.
 

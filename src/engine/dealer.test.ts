@@ -8,7 +8,7 @@ import type { Deal, PlayerConstraints, Seat } from "./types.ts";
 
 const ex1 = () =>
   inferConstraints({ auction: calls("1N P 3N P P P"), dealer: "N", leader: "E", profiles: profilesOf({ N: "opps", S: "opps", E: "ss", W: "ss" }) });
-const ex1Known = { seat: "E" as Seat, cards: parseSymbolHand("QJ1094 ♠ K82 ♥ 963 ♦ 75 ♣") };
+const ex1Known = { seat: "E" as Seat, cards: parseSymbolHand("QJ1095 ♠ K74 ♥ 852 ♦ 63 ♣") };
 
 const hardOk = (P: PlayerConstraints, hand: Deal[Seat]): boolean => {
   const h = analyse(hand);

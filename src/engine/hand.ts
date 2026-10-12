@@ -99,7 +99,7 @@ export function satisfies(cs: ConstraintSet, h: HandInfo): boolean {
   return true;
 }
 
-/** "QJ1094.K82.963.75" (S.H.D.C, "-" or empty = void, "10" = T) -> cards. */
+/** "QJ1095.K74.852.63" (S.H.D.C, "-" or empty = void, "10" = T) -> cards. */
 export function parseDotted(text: string): Card[] {
   const parts = text.trim().split(".");
   if (parts.length !== 4) throw new Error(`hand needs 4 suits: ${text}`);

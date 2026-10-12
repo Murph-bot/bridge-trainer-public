@@ -1,6 +1,6 @@
 # Phase 6: double dummy decides, rules break near-ties
 
-Why: on the 771 book problems at IMPs the DD-only top-1 was 75.4%, the phase-5 blend 58.0%, rules-only 47.1% (`../EVAL-DISAGREEMENTS.md`). The hand-set rule weights hurt, so the scheme was inverted: double dummy decides, the rules only reorder options that DD cannot separate.
+Why: on the lead test set at IMPs, DD-only ranking beat both the phase-5 blend and rules-only ranking clearly. The hand-set rule weights hurt, so the scheme was inverted: double dummy decides, the rules only reorder options that DD cannot separate.
 
 Nothing outside this app directory was touched. Nothing was pushed.
 
@@ -8,7 +8,7 @@ Nothing outside this app directory was touched. Nothing was pushed.
 
 Everything in `decide.ts` is pure and DD-free: it works on per-option summary statistics. The live scorer, the evaluation, the adaptive-sampling test and the offline calibration all call the same functions.
 
-**Metric** (`decidingMetric` in `src/lead/config.ts`; changed after phase 6, see `docs/phase6-results.md` "IMP metric"). At IMP scoring, in every context, the deciding metric is the expected duplicate score converted to IMPs (Bridge Matey's decision 1; it reuses the phase-5 `ddScore` logic): the reference is the option with the highest mean duplicate score of the defence (ties: higher P(defeat), then the first), and option `o`'s per-deal series is `IMPs(score_o - score_ref)` with the config's `impTable`, so its mean is minus the expected IMP loss against the reference. At MP scoring the `weights` table of the config decides as before (mean defence tricks; P(defeat) in grand slams). Defeat-only mode knows only which leads set the contract and always decides by P(defeat). P(defeat) stays a displayed statistic at IMPs (the lead table and the explanation). For P(defeat) or tricks the series is the per-deal 0/1 defeat (tricks >= 8 - level) or the per-deal defence tricks.
+**Metric** (`decidingMetric` in `src/lead/config.ts`; changed after phase 6). At IMP scoring, in every context, the deciding metric is the expected duplicate score converted to IMPs (Bridge Matey's decision 1; it reuses the phase-5 `ddScore` logic): the reference is the option with the highest mean duplicate score of the defence (ties: higher P(defeat), then the first), and option `o`'s per-deal series is `IMPs(score_o - score_ref)` with the config's `impTable`, so its mean is minus the expected IMP loss against the reference. At MP scoring the `weights` table of the config decides as before (mean defence tricks; P(defeat) in grand slams). Defeat-only mode knows only which leads set the contract and always decides by P(defeat). P(defeat) stays a displayed statistic at IMPs (the lead table and the explanation). For P(defeat) or tricks the series is the per-deal 0/1 defeat (tricks >= 8 - level) or the per-deal defence tricks.
 
 **Bias corrections B1..B5** are subtracted from the option's mean in metric units (`pdefPoints / 100` or `edefTricks`), exactly as in phase 5. For the IMP metric a bias of `p` points moves that share of the option's defeating deals to the "contract made" score (the phase-5 rule) and the amount is the resulting drop of the option's mean IMPs. They are treated like rules: calibration keeps one only if it improves held-out accuracy (section 4). `tieBreak.biasOff` lists the ones switched off.
 
@@ -74,7 +74,7 @@ The file header holds the sampling settings, the seed and the total evaluation s
 
 ## 4. Calibration (`npm run calibrate`, `src/calib/fit.ts`, `calibrate.ts`)
 
-**Split.** Parity of the trailing integer of the id: `nt-p20-q1` -> 1 -> odd -> FIT; `...-q2` -> even -> REPORT. The counts are printed first and written into the report. The even set is never used for any choice.
+**Split.** Parity of the trailing integer of the id: `nt-x-q1` -> 1 -> odd -> FIT; `...-q2` -> even -> REPORT. The counts are printed first and written into the report. The even set is never used for any choice.
 
 **Objective.** Top-1 accuracy on the odd problems, the IMP and the MP item of each problem pooled (one weight set for both scorings, so that the rules stay explainable and the parameter count stays small). Accepted = the cards of the top option are in `accept_imps` (IMP item) or `accept_mps` (MP item).
 
@@ -96,7 +96,7 @@ If no weight survives, `noiseK` is not identified by the rules and the previous 
 
 **Output.** `data/lead-config.json` gets the section `tieBreak { noiseK, familyWeights, weights, dropped, biasOff, lossScale, byScoring, fittedAt, fitSplit, metrics }` (the rest of the file is untouched; `data/lead-config.baseline.json` is the phase-5 file the legacy blend reads; the parser accepts both, a file without `tieBreak` gets the defaults). The shipped values are unfitted (`fittedAt: null`, `noiseK` 1.5, family weights 0.25 as a placeholder prior) until `npm run calibrate` runs on the full cache. `.eval-out/calibration-report.md` (printed too) has: split counts, fitted values, the bias / family / rule tables with their cross-validated gains, dropped rules, even-id (held-out) and odd-id top-1 and top-3 at IMPs and MPs for blend, DD-only, rules-only, new and the extras, deals per problem and runtimes.
 
-Runtime: the fit and the report take seconds (2 s for 80 problems including the legacy modes; expect about 20-30 s for 771, the legacy recomputation dominates; `--no-legacy` skips it).
+Runtime: the fit and the report take seconds (2 s for 80 problems including the legacy modes; expect about 20-30 s for the full test set, the legacy recomputation dominates; `--no-legacy` skips it).
 
 **Commands.**
 
@@ -142,7 +142,7 @@ One entry: `override.fourth-suit-raise.1C1D1H1S2S`: after `1C-1D-1H-1S` (1S = fo
 
 ## 9. Open questions
 
-1. **The DD metric at IMPs.** *Resolved: Bridge Matey chose the expected duplicate score in IMPs (see the Metric paragraph and `docs/phase6-results.md`).* The brief asked to rank by P(defeat) at IMPs and by mean tricks at MPs. In the 80-problem trial the phase-5 duplicate-score ranking (`ddScore`) did slightly better than P(defeat) at IMPs (73.8% vs 69.0% on 42 even problems) and much worse than Edef at MPs (52.4% vs 73.8%). That is far too small a sample to conclude anything, but the full eval prints all five modes side by side. If `ddScore` wins at IMPs, switching the IMP metric to the duplicate score is a one-line change in `buildDecisionInput` plus the noise series.
+1. **The DD metric at IMPs.** *Resolved: Bridge Matey chose the expected duplicate score in IMPs (see the Metric paragraph).* The brief asked to rank by P(defeat) at IMPs and by mean tricks at MPs. In the 80-problem trial the phase-5 duplicate-score ranking (`ddScore`) did slightly better than P(defeat) at IMPs (73.8% vs 69.0% on 42 even problems) and much worse than Edef at MPs (52.4% vs 73.8%). That is far too small a sample to conclude anything, but the full eval prints all five modes side by side. If `ddScore` wins at IMPs, switching the IMP metric to the duplicate score is a one-line change in `buildDecisionInput` plus the noise series.
 2. **Rule weights are signs only.** The book weights are ignored in the new scheme. If calibration keeps few rules, is that acceptable, or should the book weight (and the 0.6 evidence factor for MPD) be the prior and only a family multiplier be fitted?
 3. **One k for two jobs.** `noiseK` sets both the rule tie-break and the adaptive-sampling test. If calibration ever returns a small `k`, adaptive sampling nearly stops. Should the adaptive test have its own `k` in `adaptive`?
 4. **Rating scale.** `lossScale` (0.25 P(defeat), 0.5 tricks, 3 IMPs; in `data/lead-config.json`) is set by Bridge Matey (IMP 3 confirmed 2026-10-05); ratings inside the noise set drop with the rule term, so a near-tie can show 90-something rather than 100.
