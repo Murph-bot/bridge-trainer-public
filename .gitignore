@@ -28,3 +28,6 @@ dist
 .eval-out
 dist-node
 .vitest
+
+# Private book-data pack (never commit)
+data/private/

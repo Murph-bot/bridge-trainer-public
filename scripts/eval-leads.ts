@@ -3,6 +3,7 @@
 // --deals N fixes the number of deals instead. --limit N takes N evenly spaced problems from the usable ones.
 // Resumable: ids already in both --out and --cache are skipped. Writes the per-problem calibration cache (npm run calibrate reads it).
 import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
+import { dataPath } from "./data-pack.mjs";
 import { dirname } from "node:path";
 import { Worker } from "node:worker_threads";
 import type { CalibCache, CalibEntry } from "../src/calib/cache.ts";
@@ -36,7 +37,7 @@ interface OutFile {
   records: ProblemRecord[];
 }
 
-const all = (JSON.parse(readFileSync(new URL("../data/lead-test-problems.json", import.meta.url), "utf8")) as { tests: TestProblem[] }).tests.filter((t) => t.usable_as_acceptance_test);
+const all = (JSON.parse(readFileSync(dataPath("lead-test-problems.json"), "utf8")) as { tests: TestProblem[] }).tests.filter((t) => t.usable_as_acceptance_test);
 let todo = ids ? all.filter((t) => ids.includes(t.id)) : all;
 if (limit !== undefined && limit < todo.length) todo = Array.from({ length: limit }, (_, i) => todo[Math.floor((i * todo.length) / limit)]!);
 

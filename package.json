@@ -10,10 +10,10 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "build:node": "node scripts/build-node.mjs",
-    "eval:leads": "node scripts/build-node.mjs && tsx scripts/eval-leads.ts",
+    "eval:leads": "node scripts/build-node.mjs && tsx --import ./scripts/data-pack-hook.mjs scripts/eval-leads.ts",
     "smoke": "node scripts/smoke.mjs",
-    "eval:group": "tsx scripts/group-disagreements.ts",
-    "calibrate": "tsx scripts/calibrate.ts",
+    "eval:group": "tsx --import ./scripts/data-pack-hook.mjs scripts/group-disagreements.ts",
+    "calibrate": "tsx --import ./scripts/data-pack-hook.mjs scripts/calibrate.ts",
     "eval:calibrate": "npm run eval:leads && npm run calibrate"
   },
   "devDependencies": {

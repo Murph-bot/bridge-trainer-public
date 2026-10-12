@@ -1,4 +1,5 @@
 import { defineConfig, type Plugin } from "vite";
+import { dataPackPlugin } from "./scripts/data-pack.mjs";
 
 type Json = Record<string, unknown>;
 
@@ -38,7 +39,7 @@ function stripSources(): Plugin {
     apply: "build",
     enforce: "pre",
     transform(code, id) {
-      const file = Object.keys(sanitizers).find((f) => id.endsWith(`/data/${f}`));
+      const file = Object.keys(sanitizers).find((f) => id.endsWith(`/${f}`));
       if (!file) return null;
       return { code: JSON.stringify(sanitizers[file]!(JSON.parse(code))), map: null };
     },
@@ -46,6 +47,6 @@ function stripSources(): Plugin {
 }
 
 export default defineConfig({
-  plugins: [stripSources()],
-  worker: { plugins: () => [stripSources()] },
+  plugins: [dataPackPlugin(), stripSources()],
+  worker: { plugins: () => [dataPackPlugin(), stripSources()] },
 });

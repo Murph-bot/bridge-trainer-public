@@ -2,6 +2,7 @@
 // Groups the IMP failures of the chosen mode of an eval run by the lead rules involved: rules that recommended our (wrong) top lead,
 // and rules that penalised the book's lead. Failures where neither kind of rule fired are double-dummy driven.
 import { readFileSync, writeFileSync } from "node:fs";
+import { dataPath } from "./data-pack.mjs";
 import { buildProblem, leadCards } from "../src/eval/problems.ts";
 import type { TestProblem } from "../src/eval/problems.ts";
 import type { ProblemRecord } from "../src/eval/evaluate.ts";
@@ -15,7 +16,7 @@ if (!inPath) {
   process.exit(2);
 }
 const file = JSON.parse(readFileSync(inPath, "utf8")) as { settings: { deals: number; seed: number }; records: ProblemRecord[] };
-const tests = new Map((JSON.parse(readFileSync(new URL("../data/lead-test-problems.json", import.meta.url), "utf8")) as { tests: TestProblem[] }).tests.map((t) => [t.id, t]));
+const tests = new Map((JSON.parse(readFileSync(dataPath("lead-test-problems.json"), "utf8")) as { tests: TestProblem[] }).tests.map((t) => [t.id, t]));
 const book = defaultRulebook();
 
 interface Group {
