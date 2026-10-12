@@ -15,6 +15,8 @@ export const EXPLAIN_EN: Record<Key, string> = {
   "explain.defeat": "{card} beats the contract on {pDefPct}% of {n} deals and takes {eDef} defence tricks on average.",
   "explain.best": "Best lead {card}: beats the contract on {pDefPct}% of deals, {eDef} tricks on average; {card} loses {loss} per deal ({unit}).",
   "explain.card.wrongCard": "Right suit, wrong card per your agreements: {agreed} is the agreed card ({source} table), not {card}.",
+  "explain.signal.ntAce": "Against notrump the ace asks partner to unblock (play an honour) or give count.",
+  "explain.signal.ntKing": "Against notrump the king asks partner for attitude (encouraging or discouraging).",
   "explain.bias.B1": "Double-dummy credit for leading from touching honours reduced by {pdefPoints} points of defeat probability.",
   "explain.bias.B3": "Double-dummy credit for an unsupported ace reduced by {pdefPoints} points of defeat probability.",
   "explain.bias.B4": "Double-dummy credit for a short trump lead reduced by {pdefPoints} points of defeat probability.",

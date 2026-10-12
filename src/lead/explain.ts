@@ -40,6 +40,8 @@ export interface Explanation {
   best: MsgRef;
   rules: ExplainRule[];
   cardAdvice: MsgRef | null;
+  /** What the ace or king led from an AK holding asks of partner against notrump; null otherwise. */
+  signal: MsgRef | null;
   biases: MsgRef[];
   notes: MsgRef[];
   weights: { dd: number; rules: number; context: string; metric: string };
@@ -50,6 +52,14 @@ export interface Explanation {
 const pct = (x: number): number => Math.round(x * 1000) / 10;
 const trunc = (x: number): number => Math.round(x * 100) / 100;
 export const FEW_DEALS = 200;
+
+export function leadSignal(ctx: LeadContext, userCard: Card): MsgRef | null {
+  const suit = userCard[1];
+  const hasAK = ["A", "K"].every((r) => ctx.hand.includes((r + suit) as Card));
+  if (ctx.contractType !== "NT" || !hasAK) return null;
+  if (userCard[0] === "A") return { key: "explain.signal.ntAce" };
+  return userCard[0] === "K" ? { key: "explain.signal.ntKing" } : null;
+}
 
 export function buildExplanation(
   rate: RateResult & { decision?: DecisionInfo },
@@ -92,6 +102,7 @@ export function buildExplanation(
     best: { key: "explain.best", params: { card: rate.bestCard, pDefPct: pct(rate.pDefBest), eDef: trunc(rate.eDefBest), loss: trunc(rate.lossUser), unit } },
     rules,
     cardAdvice: agreed.applied && agreed.agreedCard ? { key: "explain.card.wrongCard", params: { card: userCard, agreed: agreed.agreedCard, source: agreed.agreed?.source ?? "partnership" } } : null,
+    signal: leadSignal(ctx, userCard),
     biases: rate.biases.map((b) => ({ key: `explain.bias.${b.id}`, params: { pdefPoints: b.pdefPoints, edefTricks: b.edefTricks } })),
     notes,
     weights,
@@ -102,7 +113,7 @@ export function buildExplanation(
 export const EXPLAIN_KEYS = [
   "explain.verdict.best", "explain.verdict.equalBest", "explain.verdict.close", "explain.verdict.worse",
   "explain.verdict.ddBest", "explain.verdict.noiseRule", "explain.verdict.noiseBehind", "explain.verdict.noiseTie",
-  "explain.defeat", "explain.best", "explain.card.wrongCard",
+  "explain.defeat", "explain.best", "explain.card.wrongCard", "explain.signal.ntAce", "explain.signal.ntKing",
   "explain.bias.B1", "explain.bias.B3", "explain.bias.B4", "explain.bias.B5",
   "explain.note.fewDeals", "explain.note.timedOut", "explain.note.relaxed", "explain.note.unmatchedCalls", "explain.note.sample",
   "explain.note.adaptive", "explain.note.capped",

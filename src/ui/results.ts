@@ -182,6 +182,7 @@ export function renderResults(inp: ResultsInput): HTMLElement {
   body.append(
     h("h3", {}, t("res.cardNote")),
     h("p", { testid: "card-note" }, suited(e.cardAdvice ? renderMsg(e.cardAdvice) : t("res.cardOk"))),
+    ...(e.signal ? [h("p", { testid: "signal-note" }, renderMsg(e.signal))] : []),
     h("h3", {}, t("res.textbook")),
     textbook(a),
     h("h3", {}, t("res.table")),
